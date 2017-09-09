@@ -51,9 +51,8 @@ export class TaskService {
 
   update(id, data) {
     const url = this.api + "/v1/tasks/" + id;
-    return this.http.put(url, JSON.stringify(data))
+    return this.http.put(url, data)
       .toPromise()
-      .then(this.success)
       .catch(error => {
         if (error.status === 0) {
           return Promise.reject({ description: 'Connection denied' });
@@ -64,7 +63,7 @@ export class TaskService {
 
   create(task) {
     const url = this.api + "/v1/tasks";
-    return this.http.post(url, JSON.stringify(task))
+    return this.http.post(url, task)
       .toPromise()
       .then(this.success)
       .catch(error => {

@@ -1,0 +1,16 @@
+<h1 md-dialog-title>Update task</h1>
+<div md-dialog-content>
+    <md-form-field>
+        <input mdInput tabindex="1" [(ngModel)]="data.name" placeholder="Name">
+    </md-form-field>
+    <md-form-field>
+        <input mdInput tabindex="1" type="number" [(ngModel)]="data.priority" placeholder="Priority">
+    </md-form-field>
+    <md-form-field>
+        <input mdInput tabindex="1" [(ngModel)]="data.dueDate" placeholder="Due date - DD/MM/YYYY">
+    </md-form-field>
+</div>
+<div md-dialog-actions>
+    <button md-button [md-dialog-close]="data" tabindex="2">Update</button>
+    <button md-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+</div>

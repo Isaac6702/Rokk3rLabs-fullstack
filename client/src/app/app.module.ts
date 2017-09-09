@@ -1,15 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
 // Routing Module
 import { AppRoutingModule } from './app.routing';
 
 // Angular Material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule, 
-  MdPaginatorModule ,MdSortModule }   from '@angular/material';
+  MdPaginatorModule ,MdSortModule, MdDialogModule, MdFormFieldModule }   from '@angular/material';
 import 'hammerjs';
 
 //Layouts
@@ -23,7 +23,9 @@ import { EqualValidator } from "./common/directive/equal-validator.directive";
 
 //Component
 import { AppComponent } from './app.component';
-import { TableComponent } from './component/table/table.component'
+import { TableComponent } from './component/table/table.component';
+import { AddTaskComponent } from './component/add-task/add-task.component'
+import { UpdateTaskComponent } from './component/update-task/update-task.component'
 
 @NgModule({
   declarations: [
@@ -31,19 +33,24 @@ import { TableComponent } from './component/table/table.component'
     SimpleLayoutPage,
     TaskList,
     EqualValidator,
-    TableComponent
+    TableComponent,
+    AddTaskComponent,
+    UpdateTaskComponent
   ],
   imports: [
     HttpModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NoopAnimationsModule,
     MaterialModule,
     MdPaginatorModule,
-    MdSortModule
+    MdSortModule,
+    FormsModule,
+    MdDialogModule,
+    MdFormFieldModule 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AddTaskComponent, UpdateTaskComponent]
 })
 export class AppModule { }
