@@ -18,3 +18,23 @@ body {
 .overdue {
     color: red;
 }
+
+table, td, th {    
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 10px;
+    text-align:center; 
+}
+
+.add-button, .title{
+    padding-top: 40px;
+    text-align: center;
+}
