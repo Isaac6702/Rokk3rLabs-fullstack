@@ -21,8 +21,3 @@ This project was created by Isaac Arismendi, for the backend test in Rokk3rLabs
 2. Run `npm install`
 3. Run `npm start`
 4. Navigate to `http://localhost:4200/`.
-
-## To test backend
-1. Run `npm test`
-2. In the file: `<folder-project>/coverage`
-3. Open `index.html` to view coverage of test
