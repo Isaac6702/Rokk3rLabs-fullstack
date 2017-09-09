@@ -3,14 +3,14 @@
         <th md-sort-header="name">Name </th>
         <th md-sort-header="duedate">Due Date</th>
         <th md-sort-header="priority">Priority</th>
-        <th>Actions</th>
+        <th [hidden]="type === 'completed'">Actions</th>
     </tr>
 
     <tr *ngFor="let task of sortedData">
         <td>{{task.name}}</td>
         <td>{{task.dueDate}}</td>
         <td>{{task.priority}}</td>
-        <td>
+        <td [hidden]="type === 'completed'">
             <button class="btn-edit" title="update" (click)="update(task)" md-mini-fab></button>
             <button class="btn-remove" title="remove" (click)="remove(task)" md-mini-fab></button>
             <button class="btn-completed" title="completed" (click)="completed(task)" md-mini-fab></button>

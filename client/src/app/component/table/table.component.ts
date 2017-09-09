@@ -10,6 +10,7 @@ import { TaskService } from '../../providers/task.service';
 
 export class TableComponent implements OnInit, OnChanges {
     @Input() tasks: any;
+    @Input() type: string;
     sortedData: any;
 
     constructor(
@@ -19,6 +20,7 @@ export class TableComponent implements OnInit, OnChanges {
 
     ngOnInit() {
         this.sortedData = this.tasks && this.tasks.slice();
+        console.log('type--->', this.type)
     }
 
     ngOnChanges() { 
