@@ -7,7 +7,7 @@
     </tr>
 
     <tr *ngFor="let task of sortedData">
-        <td>{{task.name}}</td>
+        <td [ngClass]="{'overdue': task.overdue}">{{task.name}}</td>
         <td>{{task.dueDate}}</td>
         <td>{{task.priority}}</td>
         <td [hidden]="type === 'completed'">

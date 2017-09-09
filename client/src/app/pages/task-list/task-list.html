@@ -2,13 +2,13 @@
 
 <div class="col-xs-12 col-sm-6 content">
     <h2>Task list</h2>
-    <task-table [tasks]="tasks"></task-table>
+    <task-table [tasks]="tasks" (newTasks)="changeTasks($event)"></task-table>
 </div>
 <div class="col-xs-12 col-sm-6 content">
     <h2>Task list overdue</h2>
-    <task-table [tasks]="overdueTasks"></task-table>
+    <task-table [tasks]="overdueTasks" (newTasks)="changeTasks($event)"></task-table>
 </div>
 <div class="col-xs-12 col-sm-6 content">
     <h2>Task list completed</h2>
-    <task-table [tasks]="completedTasks" [type]="'completed'"></task-table>
+    <task-table [tasks]="completedTasks" [type]="'completed'" (newTasks)="changeTasks($event)"></task-table>
 </div>

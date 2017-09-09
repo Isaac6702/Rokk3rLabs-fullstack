@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, EventEmitter, Output } from '@angular/core';
 import { Sort } from '@angular/material';
 import { TaskService } from '../../providers/task.service';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
@@ -14,6 +14,7 @@ import { UpdateTaskComponent } from '../../component/update-task/update-task.com
 export class TableComponent implements OnInit, OnChanges {
     @Input() tasks: any;
     @Input() type: string;
+    @Output() newTasks: EventEmitter<boolean> = new EventEmitter<boolean>();
     sortedData: any;
 
     constructor(
@@ -68,6 +69,7 @@ export class TableComponent implements OnInit, OnChanges {
                             return element.id === newTask.id ? newTask : element;
                         })
                         this.sortedData = this.tasks
+                        this.newTasks.emit(true)
                     })
             }
         });
@@ -77,6 +79,7 @@ export class TableComponent implements OnInit, OnChanges {
         this.taskService.remove(task.id)
             .then(() => {
                 this.sortedData = this.sortedData.filter(element => element.id != task.id)
+                this.newTasks.emit(true)
             })
     }
 
@@ -84,6 +87,7 @@ export class TableComponent implements OnInit, OnChanges {
         this.taskService.completed(task.id)
             .then(() => {
                 this.sortedData = this.sortedData.filter(element => element.id != task.id)
+                this.newTasks.emit(true)
             })
     }
 }

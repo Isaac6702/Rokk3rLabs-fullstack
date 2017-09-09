@@ -18,21 +18,27 @@ export class TaskList {
         private taskService: TaskService,
         public dialog: MdDialog
     ) {
+        this.tasks = [];
+        this.overdueTasks = [];
+        this.completedTasks = [];
+        this.getTasks();
+    }
+
+    getTasks(){
         const now = moment();
         this.tasks = [];
         this.overdueTasks = [];
         this.completedTasks = [];
-        this.taskService.tasks(null)
+        this.taskService.tasks('pending')
             .then(tasks => {
                 this.tasks = tasks.docs.map(task => {
                     const { dueDate } = task;
                     task.dueDate = moment(dueDate).format('DD/MM/YYYY');
+                    task.overdue = moment(task.dueDate, 'DD/MM/YYYY').isBefore(now)
                     return task;
                 });
                 this.overdueTasks = this.tasks.filter(task => {
-                    if (moment(task.dueDate, 'DD/MM/YYYY').isBefore(now)) {
-                        return true;
-                    }
+                    return task.overdue;
                 })
             });
 
@@ -64,5 +70,9 @@ export class TaskList {
                     })
             }
         });
+    }
+
+    changeTasks(refresh: any): void {
+       this.getTasks();
     }
 }
