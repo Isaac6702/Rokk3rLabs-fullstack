@@ -1,0 +1,12 @@
+version: '3'
+services:
+  backend:
+    build: .
+    links:
+      - mongo
+    ports:
+      - "3000:3000"
+    environment:
+      - ENV=docker
+  mongo:
+    image: "mongo:latest"
